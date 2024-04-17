@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
-from django.utils.translation import gettext_lazy as _ 
+from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+
 
 class CustomAccountManager(BaseUserManager):
     def create_user(self, email, password, **extra_kwargs):
@@ -43,11 +44,10 @@ class UserAccount(AbstractBaseUser):
     objects = CustomAccountManager()
 
     def has_perm(self, perm, obj=None):
-        return self.is_staff 
+        return self.is_staff
 
     def has_module_perms(self, app_level):
-        return self.is_staff 
+        return self.is_staff
 
     def __str__(self):
-        return self.email 
-
+        return self.email

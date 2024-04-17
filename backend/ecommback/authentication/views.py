@@ -14,6 +14,6 @@ class UserRegistrationAPIView(generics.CreateAPIView):
             user = serializer.save()
 
             response = {"message": "verification mail sended"}
-            return Response(response, status=status.HTTP_200_CREATED)
+            return Response(response, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
